@@ -1,0 +1,8 @@
+var SAV, Vother, ESAV;
+
+--i/p: SAV, Vother
+--o/p: ESAV
+
+infer
+[](( ((<(SAV && !Vother)>^slen=1^<!(SAV && !Vother)>)^true) <=> (slen=1^<ESAV> ^true)))
+.

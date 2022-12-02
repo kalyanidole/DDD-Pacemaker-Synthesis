@@ -1,0 +1,8 @@
+var early_VA, entire_VA, VA;
+
+--i/p: early_VA, entire_VA
+--o/p: VA
+
+infer
+[]( ((<early_VA> && <entire_VA>) <=> <VA>)^true)
+.

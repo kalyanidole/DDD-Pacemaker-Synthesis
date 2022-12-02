@@ -1,0 +1,9 @@
+var AP, PAVB;
+const pavb=2;
+
+--i/p: AP
+--o/p: PAVB 
+
+infer
+TRIG(AP,pavb,PAVB,'./specs/2/auto_PAVB.py') 
+.

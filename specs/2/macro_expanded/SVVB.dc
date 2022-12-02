@@ -1,0 +1,9 @@
+var VSA,SVVB;
+const svvb=1;
+
+--i/p: VSA
+--o/p: SVVB 
+
+infer
+[]( (( (slen>=svvb+1) && ( (<(VSA)>)^true ) ) => ((slen = 1) ^( (slen = svvb) && [](<SVVB>^true) )^true ) ) ) && []( ( ((slen >= svvb+1) && ( ((slen = svvb) && []( ((<!(VSA)>)^true)  ))^true) ) => ( (slen = svvb+1) ^<!SVVB>^true ) )) 
+.

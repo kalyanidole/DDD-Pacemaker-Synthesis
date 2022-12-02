@@ -1,0 +1,8 @@
+var VSN, ASA, NoAS;
+
+--i/p: VSN, ASA
+--o/p: NoAS
+
+infer
+tBetween(VSN,ASA,NoAS)
+.

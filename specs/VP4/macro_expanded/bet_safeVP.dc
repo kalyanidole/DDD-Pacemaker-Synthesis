@@ -1,0 +1,9 @@
+var VSN, SAFE, pre_safeVP, endSAFE;
+
+--i/p: VSN, SAFE, endSAFE
+--o/p: pre_safeVP
+
+
+infer
+([]( (slen>=1 && ((<VSN && SAFE> && <!( endSAFE)>)^true)) => ( slen=1^( ([[!( endSAFE)]] && [[ pre_safeVP]]) || ( ([[!( endSAFE)]] && [[ pre_safeVP]])^ slen=1 ^((< endSAFE> && < pre_safeVP>)^true) ) || ((< endSAFE> && < pre_safeVP>)^true ) ) ) )) && ([](( slen>=1 && ((< endSAFE>)^true)) => ( slen=1^((([[!(VSN && SAFE)]] && [[! pre_safeVP]])^slen=1^(<VSN && SAFE> && <!( pre_safeVP)>)^true) ||  ( ([[!(VSN && SAFE)]] && [[! pre_safeVP]]) ) || ( (<VSN && SAFE> && <!( pre_safeVP)>)^true)) ) ))
+.

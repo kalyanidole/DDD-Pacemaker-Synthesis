@@ -1,0 +1,10 @@
+var D_imply, LRL;
+
+const lrl=35;
+
+--i/p: D_imply
+--o/p: LRL
+
+infer
+TRIG(D_imply,lrl,LRL,'./specs/13/auto_LRL.py') 
+.

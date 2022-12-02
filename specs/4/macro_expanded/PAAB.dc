@@ -1,0 +1,9 @@
+var AP, PAAB;
+const paab=1;
+
+--i/p: AP
+--o/p: PAAB 
+
+infer
+[]( (( (slen>=paab+1) && ( (<(AP)>)^true ) ) => ((slen = 1) ^( (slen = paab) && [](<PAAB>^true) )^true ) ) ) && []( ( ((slen >= paab+1) && ( ((slen = paab) && []( ((<!(AP)>)^true)  ))^true) ) => ( (slen = paab+1) ^<!PAAB>^true ) ))
+.

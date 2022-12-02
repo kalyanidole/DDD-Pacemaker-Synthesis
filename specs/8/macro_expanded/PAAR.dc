@@ -1,0 +1,8 @@
+var AP, ASN, VP, VSN, PAAR;
+
+--i/p: AP, ASN, VP, VSN
+--o/p: PAAR
+
+infer
+([]( (slen>=1 && ((<AP || ASN> && <!(VP || VSN)>)^true)) => ( slen=1^( ([[!(VP || VSN)]] && [[PAAR]]) || ( ([[!(VP || VSN)]] && [[PAAR]])^ slen=1 ^((<VP || VSN> && <PAAR>)^true) ) || ((<VP || VSN> && <PAAR>)^true ) ) ) )) && ([](( slen>=1 && ((<VP || VSN>)^true)) => ( slen=1^((([[!(AP || ASN)]] && [[!PAAR]])^slen=1^(<AP || ASN> && <!(PAAR)>)^true) ||  ( ([[!(AP || ASN)]] && [[!PAAR]]) ) || ( (<AP || ASN> && <!(PAAR)>)^true)) ) ))
+.

@@ -1,0 +1,8 @@
+var AP, ASN, VP, VSN, PAAR;
+
+--i/p: AP, ASN, VP, VSN
+--o/p: PAAR
+
+infer
+tBetween(AP || ASN,VP || VSN,PAAR)
+.

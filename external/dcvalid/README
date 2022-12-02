@@ -1,0 +1,14 @@
+==================
+Installation Notes
+==================
+This version is tested on Ubuntu 16.04 and 18.04 (x_86 64 bit architecture).
+It required python and perl to be installed on the system
+
+1. untar the archive into <mydcvalid> directory
+2. set an environment variable 
+export DCVALID_CONFIG_PATH=<path to mydcvalid directory>
+export PATH=$DCVALID_CONFIG_PATH/bin:$PATH
+
+Better to add it to .bashrc file.
+You will be able to use following command
+dcvalid <dc file>

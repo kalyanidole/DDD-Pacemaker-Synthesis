@@ -1,0 +1,9 @@
+var A_imply, PVAR;
+const pvar=5;
+
+--i/p: A_imply
+--o/p: PVAR
+
+infer
+TRIG(A_imply,pvar,PVAR,'./specs/6/auto_PVAR.py')
+.

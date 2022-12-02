@@ -1,0 +1,10 @@
+var SAFE, endSAFE;
+
+--i/p: SAFE
+--o/p: endSAFE
+
+
+infer
+[](( ((<SAFE>^slen=1^<!SAFE>)^true) <=> (slen=1^<endSAFE> ^true)))
+.
+

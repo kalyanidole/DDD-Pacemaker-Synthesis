@@ -1,0 +1,10 @@
+var D_imply, URL;
+
+const url=25;
+
+--i/p: D_imply
+--o/p: URL
+
+infer
+TRIG(D_imply,url,URL,'./specs/13/auto_URL.py') 
+. 

@@ -1,0 +1,9 @@
+var EPAV, ESAV, Vother, URL, endURL, pre_lateVP;
+
+
+--i/p: EPAV, ESAV, Vother, URL, endURL
+--o/p: pre_lateVP
+
+infer
+([]( (slen>=1 && ((< ((EPAV || ESAV) && !Vother && URL)> && <!( endURL)>)^true)) => ( slen=1^( ([[!( endURL)]] && [[ pre_lateVP]]) || ( ([[!( endURL)]] && [[ pre_lateVP]])^ slen=1 ^((< endURL> && < pre_lateVP>)^true) ) || ((< endURL> && < pre_lateVP>)^true ) ) ) )) && ([](( slen>=1 && ((< endURL>)^true)) => ( slen=1^((([[!( ((EPAV || ESAV) && !Vother && URL))]] && [[! pre_lateVP]])^slen=1^(< ((EPAV || ESAV) && !Vother && URL)> && <!( pre_lateVP)>)^true) ||  ( ([[!( ((EPAV || ESAV) && !Vother && URL))]] && [[! pre_lateVP]]) ) || ( (< ((EPAV || ESAV) && !Vother && URL)> && <!( pre_lateVP)>)^true)) ) ))
+.

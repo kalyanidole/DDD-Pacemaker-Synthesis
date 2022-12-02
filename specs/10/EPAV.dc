@@ -1,0 +1,9 @@
+var PAV, Vother, EPAV;
+
+--i/p: PAV, Vother
+--o/p: EPAV
+
+
+infer
+endOf((PAV && !Vother),EPAV)
+.

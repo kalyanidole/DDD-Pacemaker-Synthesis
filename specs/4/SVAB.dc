@@ -1,0 +1,9 @@
+var VSA, SVAB;
+const svab=2;
+
+--i/p: VSA
+--o/p: SVAB
+
+infer
+TRIG(VSA,svab,SVAB,'./specs/4/auto_SVAB.py')
+.

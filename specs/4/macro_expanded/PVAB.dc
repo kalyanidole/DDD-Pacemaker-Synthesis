@@ -1,0 +1,9 @@
+var VP, PVAB;
+const pvab=1;
+
+--i/p: VP
+--o/p: PVAB 
+
+infer
+[]( (( (slen>=pvab+1) && ( (<(VP)>)^true ) ) => ((slen = 1) ^( (slen = pvab) && [](<PVAB>^true) )^true ) ) ) && []( ( ((slen >= pvab+1) && ( ((slen = pvab) && []( ((<!(VP)>)^true)  ))^true) ) => ( (slen = pvab+1) ^<!PVAB>^true ) ))
+.

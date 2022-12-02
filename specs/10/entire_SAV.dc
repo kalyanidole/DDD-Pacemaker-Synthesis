@@ -1,0 +1,9 @@
+var ASN, entire_SAV;
+const sav=15;
+
+--i/p: ASN
+--o/p: entire_SAV
+
+infer
+TRIG(ASN,sav,entire_SAV,'./specs/10/auto_entire_SAV.py')
+.

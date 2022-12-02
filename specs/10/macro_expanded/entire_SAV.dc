@@ -1,0 +1,9 @@
+var ASN, entire_SAV;
+const sav=4;
+
+--i/p: ASN
+--o/p: entire_SAV
+
+infer
+[]( (( (slen>=sav+1) && ( (<(ASN)>)^true ) ) => ((slen = 1) ^( (slen = sav) && [](<entire_SAV>^true) )^true ) ) ) && []( ( ((slen >= sav+1) && ( ((slen = sav) && []( ((<!(ASN)>)^true)  ))^true) ) => ( (slen = sav+1) ^<!entire_SAV>^true ) )) 
+.

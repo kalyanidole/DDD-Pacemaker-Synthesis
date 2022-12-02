@@ -1,0 +1,8 @@
+var Vother, ESAV, EPAV, B_imply, BOOT;
+
+--i/p: Vother, ESAV, EPAV, BOOT
+--o/p: B_imply
+
+infer
+[]( ((<Vother> ||<ESAV> || <EPAV> || <BOOT>) <=> <B_imply>)^true)
+.

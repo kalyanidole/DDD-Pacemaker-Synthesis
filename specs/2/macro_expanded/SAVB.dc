@@ -1,0 +1,9 @@
+var ASA, SAVB;
+const savb=1;
+
+--i/p: ASA
+--o/p: SAVB 
+
+infer
+[]( (( (slen>=savb+1) && ( (<(ASA)>)^true ) ) => ((slen = 1) ^( (slen = savb) && [](<SAVB>^true) )^true ) ) ) && []( ( ((slen >= savb+1) && ( ((slen = savb) && []( ((<!(ASA)>)^true)  ))^true) ) => ( (slen = savb+1) ^<!SAVB>^true ) )) 
+.

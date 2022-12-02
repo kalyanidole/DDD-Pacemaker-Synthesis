@@ -1,0 +1,8 @@
+var early_SAV, entire_SAV, SAV;
+
+--i/p: early_SAV, entire_SAV
+--o/p: SAV
+
+infer
+[]( ((<early_SAV> && <entire_SAV>) <=> <SAV>)^true)
+.

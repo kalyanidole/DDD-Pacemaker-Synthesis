@@ -1,0 +1,9 @@
+var URL, endURL;
+
+--i/p: URL
+--o/p: endURL
+
+infer
+endOf(URL,endURL)
+.
+

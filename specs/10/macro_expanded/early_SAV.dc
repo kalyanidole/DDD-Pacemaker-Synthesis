@@ -1,0 +1,8 @@
+var ASN, Vother, early_SAV;
+
+--i/p: ASN,Vother
+--o/p: early_SAV
+
+infer
+([]( (slen>=1 && ((<ASN> && <!(Vother)>)^true)) => ( slen=1^( ([[!(Vother)]] && [[early_SAV]]) || ( ([[!(Vother)]] && [[early_SAV]])^ slen=1 ^((<Vother> && <early_SAV>)^true) ) || ((<Vother> && <early_SAV>)^true ) ) ) )) && ([](( slen>=1 && ((<Vother>)^true)) => ( slen=1^((([[!(ASN)]] && [[!early_SAV]])^slen=1^(<ASN> && <!(early_SAV)>)^true) ||  ( ([[!(ASN)]] && [[!early_SAV]]) ) || ( (<ASN> && <!(early_SAV)>)^true)) ) ))
+.

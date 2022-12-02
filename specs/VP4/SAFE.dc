@@ -1,0 +1,10 @@
+var AP, SAFE;
+
+const safe=5;
+
+--i/p: AP
+--o/p: SAFE
+
+infer
+TRIG(AP,safe,SAFE,'./specs/VP4/auto_SAFE.py') 
+.

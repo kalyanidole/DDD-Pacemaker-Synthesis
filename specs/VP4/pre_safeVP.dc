@@ -1,0 +1,9 @@
+var pre_safeVP, safeVP;
+
+--i/p: pre_safeVP
+--o/p: safeVP
+
+infer
+endOf(pre_safeVP,safeVP)
+.
+

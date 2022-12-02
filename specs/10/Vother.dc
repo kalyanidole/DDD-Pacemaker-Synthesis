@@ -1,0 +1,8 @@
+var VSN, VO, SAFE, URL, Vother;
+
+--i/p: VSN, VO, SAFE, URL
+--o/p: Vother
+
+infer
+[]( ((<VSN> || (<VO> && <!SAFE> && <!URL>)) <=> <Vother>)^true)
+.

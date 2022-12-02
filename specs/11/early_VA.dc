@@ -1,0 +1,8 @@
+var B_imply, ASN, early_VA;
+
+--i/p: B_imply, ASN
+--o/p: early_VA
+
+infer
+tBetween(B_imply,ASN,early_VA,'./specs/11/auto_early_VA.py')
+.

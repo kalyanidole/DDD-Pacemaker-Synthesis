@@ -1,0 +1,9 @@
+var C_imply, ExPVAR;
+const expvar=5;
+
+--i/p: C_imply
+--o/p: ExPVAR
+
+infer
+TRIG(C_imply,expvar,ExPVAR,'./specs/11/auto_ExPVAR.py') 
+.

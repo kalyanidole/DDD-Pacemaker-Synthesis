@@ -1,0 +1,10 @@
+var SAFE, endSAFE;
+
+--i/p: SAFE
+--o/p: endSAFE
+
+
+infer
+endOf(SAFE,endSAFE)
+.
+

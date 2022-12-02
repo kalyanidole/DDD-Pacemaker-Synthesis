@@ -1,0 +1,9 @@
+var ASA, SAAB;
+const saab=2;
+
+--i/p: ASA
+--o/p: SAAB
+
+infer
+TRIG(ASA,saab,SAAB,'./specs/4/auto_SAAB.py')
+.

@@ -1,0 +1,8 @@
+var B_imply, ASN, early_VA;
+
+--i/p: B_imply, ASN
+--o/p: early_VA
+
+infer
+([]( (slen>=1 && ((<B_imply> && <!(ASN)>)^true)) => ( slen=1^( ([[!(ASN)]] && [[early_VA]]) || ( ([[!(ASN)]] && [[early_VA]])^ slen=1 ^((<ASN> && <early_VA>)^true) ) || ((<ASN> && <early_VA>)^true ) ) ) )) && ([](( slen>=1 && ((<ASN>)^true)) => ( slen=1^((([[!(B_imply)]] && [[!early_VA]])^slen=1^(<B_imply> && <!(early_VA)>)^true) ||  ( ([[!(B_imply)]] && [[!early_VA]]) ) || ( (<B_imply> && <!(early_VA)>)^true)) ) ))
+.

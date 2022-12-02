@@ -1,0 +1,10 @@
+var D_imply, URL;
+
+const url=12;
+
+--i/p: D_imply
+--o/p: URL
+
+infer
+[]( (( (slen>=url+1) && ( (<(D_imply)>)^true ) ) => ((slen = 1) ^( (slen = url) && [](<URL>^true) )^true ) ) ) && []( ( ((slen >= url+1) && ( ((slen = url) && []( ((<!(D_imply)>)^true)  ))^true) ) => ( (slen = url+1) ^<!URL>^true ) )) 
+.

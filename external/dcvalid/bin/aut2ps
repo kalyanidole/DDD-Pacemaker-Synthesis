@@ -1,0 +1,10 @@
+#!/usr/bin/perl
+if ($#ARGV < 0) { 
+die "Usage: aut2ps <automaton file> \n";
+                }
+`which dot`;
+    if ($?) { print STDOUT "Cannot execute dot. Pl. install graphviz in PATH\n";
+              die "aborting $!\n" ;
+	    }
+system("dfaobs104-linux $ARGV[0] foo gviz > $ARGV[0].dot") ;
+system("dot -Tps $ARGV[0].dot > $ARGV[0].ps") ;

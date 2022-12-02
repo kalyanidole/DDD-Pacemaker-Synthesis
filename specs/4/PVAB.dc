@@ -1,0 +1,9 @@
+var VP, PVAB;
+const pvab=2;
+
+--i/p: VP
+--o/p: PVAB
+
+infer
+TRIG(VP,pvab,PVAB,'./specs/4/auto_PVAB.py') 
+.

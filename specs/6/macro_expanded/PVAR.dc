@@ -1,0 +1,9 @@
+var A_imply, PVAR;
+const pvar=6;
+
+--i/p: A_imply
+--o/p: PVAR
+
+infer
+[]( (( (slen>=pvar+1) && ( (<(A_imply)>)^true ) ) => ((slen = 1) ^( (slen = pvar) && [](<PVAR>^true) )^true ) ) ) && []( ( ((slen >= pvar+1) && ( ((slen = pvar) && []( ((<!(A_imply)>)^true)  ))^true) ) => ( (slen = pvar+1) ^<!PVAR>^true ) )) 
+.

@@ -1,0 +1,8 @@
+var AS, PVAB, PAAB, SVAB, SAAB,ASA;
+
+--i/p: AS, PVAB, PAAB, SVAB,SAAB
+--o/p: ASA
+
+infer
+[]( ( (<AS> && <!PVAB> && <!PAAB> && <!SVAB> && <!SAAB>) <=> <ASA> )^true)
+.

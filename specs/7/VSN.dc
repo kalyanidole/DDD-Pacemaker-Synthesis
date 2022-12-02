@@ -1,0 +1,8 @@
+var PVVR, VSA, VSN;
+
+--i/p: PVVR, VSA
+--o/p: VSN
+
+infer
+[]( ((<!PVVR> && <VSA>) <=> <VSN>)^true )
+.

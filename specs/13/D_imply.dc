@@ -1,0 +1,10 @@
+var VP, VSN, D_imply;
+
+const lrl=4;
+
+--i/p: VP,VSN
+--o/p: D_imply
+
+infer
+[]( ((<VP> || <VSN>) <=> <D_imply>)^true)
+.

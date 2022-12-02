@@ -1,0 +1,8 @@
+var VA, ASN, EVA;
+
+--i/p: VA, ASN
+--o/p: EVA
+
+infer
+endOf((VA && !ASN),EVA)
+.

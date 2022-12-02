@@ -1,0 +1,9 @@
+var ASA, SAAB;
+const saab=1;
+
+--i/p: ASA
+--o/p: SAAB 
+
+infer
+[]( (( (slen>=saab+1) && ( (<(ASA)>)^true ) ) => ((slen = 1) ^( (slen = saab) && [](<SAAB>^true) )^true ) ) ) && []( ( ((slen >= saab+1) && ( ((slen = saab) && []( ((<!(ASA)>)^true)  ))^true) ) => ( (slen = saab+1) ^<!SAAB>^true ) ))
+.

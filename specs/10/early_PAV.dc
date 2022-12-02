@@ -1,0 +1,8 @@
+var AP, Vother, early_PAV;
+
+--i/p: AP,Vother
+--o/p: early_PAV
+
+infer
+tBetween(AP,Vother,early_PAV,'./specs/10/auto_early_PAV.py')
+.

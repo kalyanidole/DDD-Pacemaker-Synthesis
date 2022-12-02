@@ -1,0 +1,8 @@
+var VSN, NoAS, C_imply;
+
+--i/p: VSN, NoAS
+--o/p: C_imply
+
+infer
+[]( ((<VSN> && <NoAS>) <=> <C_imply>)^true)
+.

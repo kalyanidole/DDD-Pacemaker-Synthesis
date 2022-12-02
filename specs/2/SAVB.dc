@@ -1,0 +1,9 @@
+var ASA, SAVB;
+const savb=2;
+
+--i/p: ASA
+--o/p: SAVB 
+
+infer
+TRIG(ASA,savb,SAVB,'./specs/2/auto_SAVB.py') 
+.

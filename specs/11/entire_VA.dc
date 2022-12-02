@@ -1,0 +1,9 @@
+var B_imply, entire_VA;
+const va=20;
+
+--i/p: B_imply
+--o/p: entire_VA
+
+infer
+TRIG(B_imply,va,entire_VA,'./specs/11/auto_entire_VA.py')
+.

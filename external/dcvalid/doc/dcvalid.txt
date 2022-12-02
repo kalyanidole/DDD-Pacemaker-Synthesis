@@ -1,0 +1,428 @@
+                           USER MANUAL
+
+                      DCVALID version 1.4
+                      ===================
+
+                       Paritosh K. Pandya
+              Tata Institute of Fundamental Research
+                         Mumbai, India
+  
+
+
+DCVALID is a program to check validity of discrete time duration
+calculus formulae.  DCVALID deals with Quantified (i.e. second order)
+Propositional Duration Calculus formulae. For definiteness we call this
+logic QDDC.  
+
+DCVALID also comes with CTLDC which allows CTL[DC] formulae to be
+model checked against SMV, Verilog and ESTEREL designs. CTL[DC]
+extends QDDC with liveness and branching using CTL operators. It
+also extends CTL by allowing past to be specified as QDDC formula.
+See separate user manual of CTLDC for details.
+
+TODO:  Version 2 will integrate DCVALID with symbolic constraint
+solving procedures for linear constraints over real numbers.
+
+Acknowledgments: DCVALID1.4 makes use of the the validity checker for
+WS1S formulae, MONA1.4, from Aarhus University, Denmark. We are
+grateful the designers of MONA for kindly permitting us to use
+it. Information on MONA may be obtained on the web at the following
+URL: http://www.brics.dk/~mona/.
+
+********
+Caution: Version 1.4 is a beta version of DCVALID
+Please help by reporting errors to pandya@tcs.tifr.res.in
+---------------------------------------------------------
+
+DC specification is kept in a file.
+
+A dcspec has the form:
+---------------------
+discrete;            -- dense OR discrete;  this line is optional.
+var P,Q ;
+const M=ce1, N=ce2;
+
+define <name1>[Params] as formula1 ;
+define <name2>[Params] as formula2 ;
+  
+define <name_n>[Params] as formula_n;
+
+infer formula( <name1>[Params] ,..., <name_n>[Params] ) .
+
+------------------
+The tool checks whether
+
+    |= formula[ <name1>, ... ,<name_n> ]
+
+i.e. it is true in all behaviours. Identifiers <name_1>,...,<name_n>
+occur as subformulas in the goal formula and are expanded. Defined
+formulae can have propositional state variables as parameters. Actual
+parameters can be arbitrary propositions.
+
+A behaviour is a finite sequence of states which (in the interval
+spanning the whole sequence) satisfies or violates a formula.
+
+
+Notes: 
+======
+(a) keyword "dense" invokes the checker for dense-time (now obsolate).
+    keyword "discrete" invokes the checker for discrete time.
+    If these are omitted, then by default, discrete-time checker is
+    invoked.
+
+(b) P,Q .. are propositional state variables occurring FREE in formulas.
+    All such variables must be declared, otherwise you get an error.
+
+    Variable names "x1", "x2", ..., "x27" etc starting with "x" 
+    followed by a number, are reserved. However, "xx1" etc are 
+    available. The following variable names are also reserved.
+       "define" "macro" "as" "slen" "dur" "ext" "pt" "true" "false"
+       "ex" "all" "mu" "nu" "infer" "subword" "entire" "var" "const" 
+       "dense" "discrete"
+
+    If there are no variables DO NOT TYPE "var ;".
+
+(c) M,N are constant names and ce1, ce2 are corresponding constant 
+    expressions.
+    If there are no constants DO NOT TYPE "const ;"
+    Constant expressions are evaluated at compile time, and must only
+    use constants defined earlier.
+     
+(d) definition part is optional. If there are no definitions
+    directly type "infer".
+    Definitions cannot be recursive. They are expanded in the goal
+    by macro-substitution.
+    A definition begins with either words "macro" or "define",
+
+(g) A definition can have zero or more formal parameters which are state
+    variables. The use of definition must supply appropriate length list 
+    of PROPOSITIONS as actual parameters.
+
+(f) Dcspec must end with a ".".
+
+(g) There can be comments in the specification.
+    Comments begin with "--" and last till the end of the line.
+    E.g.
+       var P ; -- variable declaration
+       infer subword       -- there are no definitions
+          true   
+       .
+
+
+SYNTAX and Semantics:
+=====================
+
+
+Convention:
+         P,Q       propositional variables
+         A,B        propositions
+         D1,D2       formulae
+         c,c1       Natural number constants
+         ce       Constant expression.
+
+Syntax of Propositions (states):
+================================= 
+       tt              state "true"
+       ff              state "false"
+       P              state variable "P"
+        st              state true only at position 0
+       !A              negation
+       A && B               conjunction
+       A || B              disjunction
+       A => B              implication
+       A <=> B              equivalence
+       (A)              brackets can be used ...
+       -A              value of A in previous state.
+       +A              value of A in next state.
+
+precedence       
+    !,*,+,st    >    &&    >    ||    >    =>,<=>
+
+Syntax of Constant (integer) expressions
+========================================
+       c              integer constant
+       x              constant name (must be defined earlier)
+       ce1 + ce2       
+       ce1 - ce2
+       (ce)
+
+
+Semantics
+=========
+
+The formula occurs in scope of an alphabet ALPHA which is a finite set
+of propositional variables declared by the var declaration. A state
+assigns a truth value to each proposition in ALPHA.
+       STATE = ALPHA -> {0,1}
+
+A behavior is a finite nonempty sequence of states
+       BEH = STATE+
+
+Given a behaviour I, let #I denote its  length. Then, 
+       dom(I) = {0,..,#I-1}.
+Let I,i|=A denote that proposition A is true at position i within
+behaviour I with obvious meaning. The meanings of *A and +A are
+defined below (these should be used with care):
+
+       I,i |= *A iff i>0 and I,i-1 |= A
+       I,i |= +A iff i< #I-1 and I,i+1 |= A
+
+
+Syntax and semantics of formulae:
+================================
+
+A formula D is evaluated to true or false for a subword (interval) of
+the behaviour.
+
+The set of all intervals within I is given by
+       INTV(I) = { [b,e] in dom(I) X dom(I) | b <= e }
+
+I,[b,e] |= D denotes that D evaluates to true for interval [b,e]
+within the behaviour I.
+
+
+< A >         now A
+              I,[b,e] |= <A> iff b=e and I,b|= A
+       
+[[ A ]]       invariant A
+              I,[b,e] |= [[ A ]] iff forall m: b<=m<=e. I,m|=A
+
+[A]           Everywhere inside A
+              I,[b,e] |= [ A ] iff b < e and
+                    forall m: b< =m< e. I[A](m)=true
+
+{{ A }}       onestep A
+              I,[b,e] |= {{A}} iff e=b+1 and I,b|= A
+
+
+Terms in Duration calculus have the form
+  slen        length of interval
+  scount A    count of how many times A is true in interval [b,e]
+  sdur A      count of how many times A is true in [b,e] excluding e
+The value of term is denoted by I,[b,e](term). Then,
+  I,[b,e](slen)     =  e - b
+  I,[b,e](scount A) =  sum (if I,i|= A then 1 else 0) for b <= i <= e
+  I,[b,e](sdur A)   =  sum (if I,i|= A then 1 else 0) for b <= i < e
+
+
+term = ce     I,[b,e](term) = ce
+term < ce
+term <= ce
+term > ce
+term >= ce
+              (note that "ce = term" is illegal)
+
+(Note: The support for lengths, counts and durations is quite
+inefficient at present. Please use these constructs with caution with
+large constants ce.)
+                      
+ext           means slen > 0
+pt            means slen=0
+true
+false
+
+D1^D2         chop     This is the only modality of Duration Calculus
+              I,[b,e] |= D1^D2 iff there exists m: b<=m<=e such that
+                     I,[b,m] |= D1 and I,[m,e] |= D2
+
+!D            not
+D1 && D2      and
+D1 || D2      or
+D1 => D2      implies
+D1 <=> D2     equivalent
+(D)           Brackets for grouping
+
+<>D           somewhere D
+              means       true^D^true
+[]D           Everywhere D
+              means       ~<>~D
+
+ex P. D       second order existential quantification over state P.
+all P. D      second order universal quantification over state P.
+*D            Kleene Closure using chop in place of catenation
+              pt || D || D^D || D^D^D || ...
+mu X. D       least fixed point operator -- NOT YET IMPLEMENTED.
+nu X. D              greatest fixed point operator -- NOT YET IMPLEMENTED. 
+[]s D              For all suffix intervals D holds (NOT IMPLEMENTED).
+
+<< D -> A >>  means  ! ( <> (D^<!A>) )
+              For every subinterval where D holds, A holds at its 
+              endpoint.
+
+
+{A} +> {B}    UNTIL means
+                  []s (<A>^true => ([A] || pt)^<B>^true ) 
+              This means once A becomes true, B will eventually
+              become true within the interval, and A persists till 
+              then.
+
+{A} -> {B}    UNLESS means
+                  << [A && !B] -> A || B >> 
+              This means once A becomes true, it will persist till 
+                B becomes or till the end of the interval.
+
+{A} =ce=> {B} FOLLOWS means
+                  << ([A] || <A>) && slen>=ce -> B >>
+              This states that if A becomes
+              true and keeps true for ce time then B will become 
+              true after the ce time. Moreover, B will persist till 
+              A remains true.
+
+{A} <=ce= {B} TRACKS means
+                  << <!-A>^([[A]] && slen < ce) -> B >>
+
+              This means B will remain true for the FIRST ce time
+              units of A becoming (and remaining) true. FIRST here 
+              refers to a rising edge for A (or initial time point 0).
+              
+{A} <-ce-     STABLE
+                  << [!A]^([A] && slen < ce) -> A >>
+              This states that A will persist for ce time once it 
+              becomes true.
+
+Precedence of Operators:
+Highest       !D, <>D, []D, *D
+              D1^D2
+              D1 && D2
+              D1 || D2
+              D1 => D2, D1 <=> D2
+lowest        ex P. D,  all P. D
+
+association
+    Operators =>, <=> associate to the right, i.e.
+       A => B => C means A => (B => C).
+    Operators &&, || associate to the left.    
+
+The validity of D over a behaviour I
+------------------------------------
+
+       I |= D iff I,[0,#I-1] |= D
+                                   
+USAGE
+=====
+
+Setup:  
+   Obtain and untar the appropriate distribution of DCVALID 1.3. This
+   includes binary files for specific architecture. Run the script
+   install.dcvalid. This generates executable scripts
+            dcvalid,  dcestobs and dcautps
+   Include the directory containing DCVALID distribution in 
+   your search PATH.
+
+1. Create a file, say file1, containing a dcspec using any text editor.
+2. type
+   $dcvalid  file1
+
+   The tool will report whether the specification is valid.
+   In case it is not valid, you get a counterexample.
+   The output comes on stdout (i.e. terminal) and some messages on
+   stderr.
+   If you want output in a file, type $dcvalid file1 > result
+
+3. If you invoke tools DCAUT or CTLDC, then the deterministic
+   finite state automaton for the formula will be temporarily stored in 
+   file /tmp/dcaut.dfa as a side effect.
+
+4. Additional tools:
+
+   $ctldc spec system
+   will model check specification in file "spec" against program "system".
+   File "spec" contains ctldc formulae. "system" can be either SMV, 
+   Verilog or Esterel. See details of ctldc model checkin in separate
+   manaual.
+
+   $dcobsgen.pl source obstype target
+   will generate finite automaton for formula "source" into file "target".
+   The automaton will be in one of following form.
+     obstype     automaton language
+      smv          smv
+      smvlag       smv  (final state is reached after one step delay)
+      vis	   blif-mv
+      esterel      esterel
+      gviz         postscript
+   This command is used internally by ctldc model checker.
+
+   $dcspinobs file
+   similar to above. Generates a file containing SPIN never-claims format
+   description of the automaton for the property.
+   This can be used in conjunction with SPIN system to check QDDC properties
+   of designs written in Promella (the SPIN modelling language).
+
+   $dcautps file target
+   will generate postscript diagram of the automaton for the formula in
+   the file "target".
+   This requires that program "dot" supplied by AT&T is installed and
+   accessible in your search path.
+
+
+Models and Counterexamples:
+===========================
+Models and Counterexamples plots the interpretation of propositional 
+variables w.r.t.  time. Horizontal axis is time.
+
+There is one row for each propositional variable. Value 0 indicates
+false and value 1 indicates true. Value X indicates "don't care" and
+can be taken to be either 0 or 1.
+
+
+
+E.g. specification 
+       discrete ;
+       var P;
+       infer entire
+        [P]^[P] => [P]^<P>
+       .
+
+produces a counter-example:
+
+       Booleans:
+       ----
+       P          110
+
+This spans an interval of lenght 2 with time positions 0,1,2.
+P is true at times 0 and 1 and false at 2.
+
+The specification
+        discrete
+       var P;
+       infer [P]^[P] => [P] .
+
+Gives the result:
+
+       Formula is valid.
+
+Examples:
+=========
+For a detailed specification examples
+see files in the examples subdirectory of the distribution.
+
+      minepump (mine-pump)                            25 seconds*
+      fischer  (fischer's mutual exclusion protocol)  24 seconds*
+      lift     (simple lift controller)               82 seconds*
+      cgate    (Delay insensitive oscillator using
+                Muller's c-gate)                      43 seconds*
+      dense    (a valid dense-time formula)
+
+* All times are on Linux system with 75Mhz pentium and 32Mb main memory
+
+For Examples of model checking SMV, Verilog and ESTEREL programs using
+CTLDC see the subdirectories smv, vis and esterel respective.
+=======================================================================
+PLEASE REPORT all bugs and suggestions to Paritosh Pandya
+at pandya@tcs.tifr.res.in
+   pandya@tifr.res.in
+
+First created by Paritosh K. Pandya in May, 1997.
+Last updated by Paritosh K. Pandya on  28 September, 2000.
+
+
+
+
+
+
+
+
+
+
+
+

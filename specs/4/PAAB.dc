@@ -1,0 +1,9 @@
+var AP, PAAB;
+const paab=2;
+
+--i/p: AP
+--o/p: PAAB
+
+infer
+TRIG(AP,paab,PAAB,'./specs/4/auto_PAAB.py')
+.

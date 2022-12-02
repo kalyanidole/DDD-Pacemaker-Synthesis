@@ -1,0 +1,8 @@
+var EPAV, ESAV, URL, VSN, scheduledVP;
+
+--i/p: EPAV, ESAV, URL, VSN
+--o/p: scheduledVP
+
+infer
+[]( (((<EPAV> || <ESAV> ) && <!URL> && <!VSN>) <=> <scheduledVP>)^true)
+.

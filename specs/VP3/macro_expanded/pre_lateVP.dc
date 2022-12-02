@@ -1,0 +1,9 @@
+var pre_lateVP, lateVP;
+
+--i/p: pre_lateVP
+--o/p: lateVP
+
+infer
+[](( ((<pre_lateVP>^slen=1^<!pre_lateVP>)^true) <=> (slen=1^<lateVP> ^true)))
+.
+

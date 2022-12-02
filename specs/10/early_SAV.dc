@@ -1,0 +1,8 @@
+var ASN, Vother, early_SAV;
+
+--i/p: ASN,Vother
+--o/p: early_SAV
+
+infer
+tBetween(ASN,Vother,early_SAV,'./specs/10/auto_early_SAV.py')
+.

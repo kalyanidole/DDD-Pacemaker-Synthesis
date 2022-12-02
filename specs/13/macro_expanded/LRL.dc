@@ -1,0 +1,11 @@
+var D_imply, LRL;
+
+const lrl=20;
+
+--i/p: D_imply
+--o/p: LRL
+
+
+infer
+[]( (( (slen>=lrl+1) && ( (<(D_imply)>)^true ) ) => ((slen = 1) ^( (slen = lrl) && [](<LRL>^true) )^true ) ) ) && []( ( ((slen >= lrl+1) && ( ((slen = lrl) && []( ((<!(D_imply)>)^true)  ))^true) ) => ( (slen = lrl+1) ^<!LRL>^true ) )) 
+.

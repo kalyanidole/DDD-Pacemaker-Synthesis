@@ -1,0 +1,8 @@
+var BOOT;
+
+--i/p: AS, VS
+--o/p: BOOT 
+
+infer
+(<BOOT> || (<BOOT>^slen<=1^([](!<BOOT>^true))) )
+.

@@ -1,0 +1,9 @@
+var VS, PVVB, PAVB, SVVB, SAVB,VSA;
+
+--i/p: VS, PAVB, SAVB, PVVB, SVVB
+--o/p: VSA
+
+infer
+[]( ( (<VS> && <!PAVB> && <!SAVB> && <!PVVB> && <!SVVB>) <=> <VSA> )^true) 
+.
+

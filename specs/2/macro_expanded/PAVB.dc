@@ -1,0 +1,9 @@
+var AP, PAVB;
+const pavb=1;
+
+--i/p: AP
+--o/p: PAVB 
+
+infer
+[]( (( (slen>=pavb+1) && ( (<(AP)>)^true ) ) => ((slen = 1) ^( (slen = pavb) && [](<PAVB>^true) )^true ) ) ) && []( ( ((slen >= pavb+1) && ( ((slen = pavb) && []( ((<!(AP)>)^true)  ))^true) ) => ( (slen = pavb+1) ^<!PAVB>^true ) )) 
+.

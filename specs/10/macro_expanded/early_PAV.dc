@@ -1,0 +1,8 @@
+var AP, Vother, early_PAV;
+
+--i/p: AP,Vother
+--o/p: early_PAV
+
+infer
+([]( (slen>=1 && ((<AP> && <!(Vother)>)^true)) => ( slen=1^( ([[!(Vother)]] && [[early_PAV]]) || ( ([[!(Vother)]] && [[early_PAV]])^ slen=1 ^((<Vother> && <early_PAV>)^true) ) || ((<Vother> && <early_PAV>)^true ) ) ) )) && ([](( slen>=1 && ((<Vother>)^true)) => ( slen=1^((([[!(AP)]] && [[!early_PAV]])^slen=1^(<AP> && <!(early_PAV)>)^true) ||  ( ([[!(AP)]] && [[!early_PAV]]) ) || ( (<AP> && <!(early_PAV)>)^true)) ) ))
+.

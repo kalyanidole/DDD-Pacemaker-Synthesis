@@ -1,0 +1,8 @@
+var VSN, ASA, NoAS;
+
+--i/p: VSN, ASA
+--o/p: NoAS
+
+infer
+([]( (slen>=1 && ((<VSN> && <!(ASA)>)^true)) => ( slen=1^( ([[!(ASA)]] && [[NoAS]]) || ( ([[!(ASA)]] && [[NoAS]])^ slen=1 ^((<ASA> && <NoAS>)^true) ) || ((<ASA> && <NoAS>)^true ) ) ) )) && ([](( slen>=1 && ((<ASA>)^true)) => ( slen=1^((([[!(VSN)]] && [[!NoAS]])^slen=1^(<VSN> && <!(NoAS)>)^true) ||  ( ([[!(VSN)]] && [[!NoAS]]) ) || ( (<VSN> && <!(NoAS)>)^true)) ) ))
+.

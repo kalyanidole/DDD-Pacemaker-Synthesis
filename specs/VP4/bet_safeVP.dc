@@ -1,0 +1,9 @@
+var VSN, SAFE, pre_safeVP, endSAFE;
+
+--i/p: VSN, SAFE, endSAFE
+--o/p: pre_safeVP
+
+
+infer
+tBetween(VSN && SAFE, endSAFE, pre_safeVP)
+.

@@ -1,0 +1,9 @@
+var URL, endURL;
+
+--i/p: URL
+--o/p: endURL
+
+infer
+[](( ((<URL>^slen=1^<!URL>)^true) <=> (slen=1^<endURL> ^true)))
+.
+

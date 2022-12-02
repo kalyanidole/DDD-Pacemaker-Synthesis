@@ -1,0 +1,9 @@
+var AP, entire_PAV;
+const pav=15;
+
+--i/p: AP
+--o/p: entire_PAV
+
+infer
+TRIG(AP,pav,entire_PAV,'./specs/10/auto_entire_PAV.py')
+.

@@ -1,0 +1,8 @@
+var early_PAV, entire_PAV, PAV;
+
+--i/p: early_PAV, entire_PAV
+--o/p: PAV
+
+infer
+[]( ((<early_PAV> && <entire_PAV>) <=> <PAV>)^true)
+.

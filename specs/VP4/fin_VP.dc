@@ -1,0 +1,8 @@
+var scheduledVP, lateVP, safeVP, VP;
+
+--i/p: scheduledVP,lateVP, safeVP
+--o/p: VP
+
+infer
+[]( ((<scheduledVP> || <lateVP> || <safeVP>) <=> <VP>)^true )
+.

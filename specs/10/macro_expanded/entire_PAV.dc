@@ -1,0 +1,9 @@
+var AP, entire_PAV;
+const pav=4;
+
+--i/p: AP
+--o/p: entire_PAV
+
+infer
+[]( (( (slen>=pav+1) && ( (<(AP)>)^true ) ) => ((slen = 1) ^( (slen = pav) && [](<entire_PAV>^true) )^true ) ) ) && []( ( ((slen >= pav+1) && ( ((slen = pav) && []( ((<!(AP)>)^true)  ))^true) ) => ( (slen = pav+1) ^<!entire_PAV>^true ) )) 
+.

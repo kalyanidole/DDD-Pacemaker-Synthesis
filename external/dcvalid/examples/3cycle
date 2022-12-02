@@ -1,0 +1,5 @@
+var req, ack;
+
+infer
+[] ( [[req]] && slen >= 20  =>  scount ack >=3)
+.

@@ -1,0 +1,54 @@
+#!/usr/bin/perl
+#DCVALID 2.0 by Paritosh K. Pandya, TIFR
+#file dcvalid.pl
+# Hey, this is my second perl script. No laughing -- Paritosh
+
+#configuration file
+#do "/home/amol/Tools/DCVALID/dccheck200/dcconfig.pl" ;
+
+#print "DCVALID 2.0\n\n" ;
+use Cwd qw(cwd);
+my $PWD = cwd;
+     
+print "$PWD\n";
+
+
+$dcsynthpath =  $ENV{'DCVALID_CONFIG_PATH'}; 
+print "Hello, $dcsynthpath\n"; 
+
+#my $path = "/home/amol/Downloads/DCSynthTool/bin"; 
+
+if ($#ARGV < 0) { die "usage: dcvalid.pl sourcefile [switches]\n" ; }
+
+$source = $ARGV[0];
+
+if (! -r $source) { die "Cant open $source\n" ; }
+@args = ("cpp -undef -nostdinc -P -I . -I ","${dcsynthpath}/lib ", "$source ", ">", 
+              "${PWD}/cppout.dc");  
+
+print "@args\n";
+system("@args");
+
+#@args = ("${installdir}/dc2mona200-linux", "${tmpdir}cppout.dc", 
+#          ">", "${tmpdir}dc2mout.mona");
+@args = ("${dcsynthpath}/bin/dc2mona200-linux", "${PWD}/cppout.dc", 
+          ">", "${PWD}/dc2mout.mona");
+
+print "@args\n" ;
+system("@args");
+if ($?)
+{   print "Error in DC subformula. See file  $source\n" ;
+    system("cat ${PWD}/dc2mout.mona");
+    die "aborting\n" ;
+}
+
+@moreargs = @ARGV[1 .. $#ARGV];
+
+system("${dcsynthpath}/bin/mona104-linux @moreargs ${PWD}/dc2mout.mona");
+if ($?)
+{   print "Error in running MONA. Contact Paritosh\n" ;
+#    system("cat ${tmpdir}dc2mout.dfa");
+    die "aborting\n" ;
+}
+
+`rm -f ${PWD}/dc2mout.mona` ;

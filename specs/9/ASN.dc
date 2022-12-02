@@ -1,0 +1,8 @@
+var PAAR, PVAR, ExPVAR, ASA, ASN;
+
+--i/p: PAAR, PVAR, ExPVAR, ASA
+--o/p: ASN
+
+infer
+[]( (( <!PAAR> && <!PVAR> && <!ExPVAR> && <ASA>) <=> <ASN> )^true)
+.

@@ -1,0 +1,17 @@
+var Leak;
+
+const maxleak=1, minsep=30, winlen=60, leakbound=3;
+
+
+define des1() as
+[] ([Leak] => (slen <= maxleak) ) ;
+
+define des2() as
+[] ( [Leak]^[!Leak]^[Leak] => (slen=2 ^ slen >= minsep)  ) ;
+
+define concl() as
+[] (slen <= winlen => sdur Leak <= 2) ;
+
+infer 
+ des1() && des2() => concl()
+.

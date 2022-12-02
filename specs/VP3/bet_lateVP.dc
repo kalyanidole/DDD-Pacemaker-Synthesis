@@ -1,0 +1,9 @@
+var EPAV, ESAV, Vother, URL, endURL, pre_lateVP;
+
+
+--i/p: EPAV, ESAV, Vother, URL, endURL
+--o/p: pre_lateVP
+
+infer
+tBetween( ((EPAV || ESAV) && !Vother && URL), endURL, pre_lateVP)
+.

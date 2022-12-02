@@ -1,0 +1,8 @@
+var VA, ASN, EVA;
+
+--i/p: VA, ASN
+--o/p: EVA
+
+infer
+[](( ((<(VA && !ASN)>^slen=1^<!(VA && !ASN)>)^true) <=> (slen=1^<EVA> ^true)))
+.

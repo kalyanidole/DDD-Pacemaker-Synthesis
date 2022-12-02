@@ -1,0 +1,9 @@
+var A_imply, PVVR;
+const pvvr=4;
+
+--i/p: A_imply
+--o/p: PVVR
+
+infer
+TRIG(A_imply,pvvr,PVVR,'./specs/6/auto_PVVR.py')
+.

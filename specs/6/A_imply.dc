@@ -1,0 +1,8 @@
+var VP, VSN, A_imply, ASA, PVAR;
+
+--i/p: VP, VSN, ASA, PVAR
+--o/p: A_imply
+
+infer
+[](((<VP> || <VSN> || (<ASA> && <PVAR>)) <=> <A_imply>)^true)
+.

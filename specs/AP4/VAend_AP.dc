@@ -1,0 +1,9 @@
+var EVA,ASN,AP;
+
+--i/p: EVA,ASN
+--o/p: AP
+
+
+infer
+[]( ((<EVA> && <!ASN>) <=> <AP>)^true)
+.

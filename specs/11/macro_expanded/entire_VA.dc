@@ -1,0 +1,9 @@
+var B_imply, entire_VA;
+const va=16;
+
+--i/p: B_imply
+--o/p: entire_VA
+
+infer
+[]( (( (slen>=va+1) && ( (<(B_imply)>)^true ) ) => ((slen = 1) ^( (slen = va) && [](<entire_VA>^true) )^true ) ) ) && []( ( ((slen >= va+1) && ( ((slen = va) && []( ((<!(B_imply)>)^true)  ))^true) ) => ( (slen = va+1) ^<!entire_VA>^true ) )) 
+.
